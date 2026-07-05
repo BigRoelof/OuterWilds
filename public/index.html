@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+  <title>Outer Wilds Ship Log Checklist</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Outfit:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Space Background Stars -->
+  <div class="stars"></div>
+  <div class="twinkling"></div>
+  <div class="nebula"></div>
+
+  <div class="app-container">
+    <!-- Top HUD Header -->
+    <header class="hud-header">
+      <div class="hud-logo">
+        <span class="hud-sub">OUTER WILDS VENTURES</span>
+        <h1 class="hud-title">SHIP LOG COMPUTER</h1>
+      </div>
+      
+      <!-- Progress Indicator -->
+      <div class="progress-container">
+        <div class="progress-stats">
+          <span class="progress-label">ARCHAEOLOGIST PROGRESS</span>
+          <span class="progress-values" id="overall-progress-text">0% (0 / 0 facts)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="overall-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Bar -->
+    <section class="controls-bar">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search entries, logs, or locations..." autocomplete="off">
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="filter-toggles">
+        <label class="toggle-container">
+          <input type="checkbox" id="hide-completed-toggle">
+          <span class="toggle-slider"></span>
+          <span class="toggle-text">Hide Completed</span>
+        </label>
+        <label class="toggle-container">
+          <input type="checkbox" id="show-rumors-toggle">
+          <span class="toggle-slider"></span>
+          <span class="toggle-text">Show Rumors</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="hud-workspace">
+      <!-- Sidebar Planet Selector -->
+      <aside class="sidebar-planets">
+        <div class="sidebar-header">DESTINATIONS</div>
+        <div class="planet-list" id="planet-list">
+          <!-- Dynamically populated -->
+        </div>
+      </aside>
+
+      <!-- Main Logs Checklist Panel -->
+      <section class="main-logs-panel">
+        <div class="logs-panel-header">
+          <h2 id="current-planet-title">Select a Destination</h2>
+          <div class="planet-stats" id="current-planet-stats"></div>
+        </div>
+
+        <div class="logs-container" id="logs-container">
+          <div class="no-selection">
+            <div class="campfire-icon">🔥</div>
+            <h3>Gather 'round the campfire, traveler.</h3>
+            <p>Select a planetary body from the list on the left to review your ship log entries, discover rumors, and verify outstanding facts required for the Archaeologist achievement.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer HUD Status -->
+    <footer class="hud-footer">
+      <div class="footer-left">
+        <span class="status-dot"></span>
+        <span class="status-text" id="status-text">Connected to database</span>
+      </div>
+      <div class="footer-right">
+        <span>© Mobius Digital | Crafted for Space Explorers</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

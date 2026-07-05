@@ -1,0 +1,25 @@
+# Node.js dependencies
+node_modules/
+
+# User progress data (personal checklist states)
+progress.json
+
+# Local environment / system files
+.env
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*

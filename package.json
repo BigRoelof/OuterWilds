@@ -1,0 +1,12 @@
+{
+  "name": "outer-wilds-checklist",
+  "version": "1.0.0",
+  "description": "An interactive ship log checklist styled in Outer Wilds space theme.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
