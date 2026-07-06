@@ -23,8 +23,8 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 ### Installation
 1. Clone or download this repository:
    ```bash
-   git clone <your-repository-url>
-   cd OuterWilds
+   git clone https://github.com/BigRoelof/OuterWilds.git
+   cd <your_directory>
    ```
 2. Install the server dependencies:
    ```bash
