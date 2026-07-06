@@ -183,66 +183,7 @@ app.post('/api/checklist', (req, res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
-// Copy SVGs from OuterWildsPlanetIcons to public/icons on startup
-function copyIcons() {
-  const sourceDir = path.join(__dirname, 'OuterWildsPlanetIcons', 'OuterWildsPlanetIcons-main');
-  const destDir = path.join(__dirname, 'public', 'icons');
-
-  if (!fs.existsSync(sourceDir)) {
-    console.warn("OuterWildsPlanetIcons source directory not found.");
-    return;
-  }
-
-  if (!fs.existsSync(destDir)) {
-    fs.mkdirSync(destDir, { recursive: true });
-  }
-
-  const mapping = {
-    "SUN_STATION": "sun-station/sun-station_v1.svg",
-    "CAVE_TWIN": "ember-twin/ember-twin.svg",
-    "TOWER_TWIN": "ash-twin/ash-twin.svg",
-    "TIMBER_HEARTH": "timber-hearth/timberhearth.svg",
-    "TIMBER_MOON": "attlerock/attlerock.svg",
-    "BRITTLE_HOLLOW": "brittle-hollow/brittle-hollow_v1.svg",
-    "WHITE_HOLE": "white-hole-station/white-hole-station.svg",
-    "COMET": "interloper/interloper.svg",
-    "GIANTS_DEEP": "giants-deep/giants-deep_v1.svg",
-    "DARK_BRAMBLE": "dark-bramble/dark-bramble.svg",
-    "QUANTUM_MOON": "quantum-moon/quantum-moon.svg",
-    "VOLCANIC_MOON": "hollows-lantern/hollows-lantern.svg",
-    "ORBITAL_PROBE_CANNON": "orbital-probe-canon/orbital-probe-canon.svg"
-  };
-
-  for (const [id, relativePath] of Object.entries(mapping)) {
-    const srcPath = path.join(sourceDir, relativePath);
-    const destPath = path.join(destDir, `${id.toLowerCase()}.svg`);
-    
-    // Fallback to sanitized folder if specific path fails
-    let finalSrcPath = srcPath;
-    if (!fs.existsSync(srcPath)) {
-      const sanitizedName = relativePath.split('/').pop().replace('_v1', '').replace('_v0', '');
-      const sanitizedPath = path.join(sourceDir, 'sanitized', sanitizedName);
-      if (fs.existsSync(sanitizedPath)) {
-        finalSrcPath = sanitizedPath;
-      }
-    }
-
-    if (fs.existsSync(finalSrcPath)) {
-      try {
-        fs.copyFileSync(finalSrcPath, destPath);
-        console.log(`Copied icon for ${id} to ${destPath}`);
-      } catch (err) {
-        console.error(`Failed to copy icon for ${id}:`, err);
-      }
-    } else {
-      console.warn(`Source icon not found for ${id} at ${finalSrcPath}`);
-    }
-  }
-}
-
 // Run server
-copyIcons();
 app.listen(PORT, () => {
   console.log(`Outer Wilds Checklist server running at http://localhost:${PORT}`);
 });
